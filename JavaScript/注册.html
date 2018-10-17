@@ -1,0 +1,101 @@
+<html>
+<head>
+<meta charset="UTF-8" />
+<title></title>
+<script type="text/javascript">
+ function init(){
+  document.form1.username.focus();
+  }
+ function blu(){
+  var space=document.form1.username.value;
+  if(space==""){
+   var sp=document.getElementById("sp").innerHTML="用户不能为空";
+   }
+  else {
+   document.getElementById("sp").innerHTML="";
+   }
+  }
+ function funpsd(){
+  var psd=document.form1.psd.value
+  if(psd==""){
+   document.getElementById("sp1").innerHTML="密码不能为空";
+   }
+  else if(psd.length<6 || psd.length>15){
+   document.getElementById("sp1").innerHTML="密码不能小于6位或不能大于15位";
+   }
+  else if(isNaN(psd)){
+   document.getElementById("sp1").innerHTML="密码必须是数字";
+   }
+  else {
+   document.getElementById("sp1").innerHTML="";
+   }
+  }
+ function funcpsd(){
+  var psd1=document.form1.psd.value;
+  var psd2=document.form1.cpsd.value;  //变量赋值在前
+  if(psd1!=psd2){
+   document.getElementById("sp2").innerHTML="密码不一致，请重新输入";
+   document.form1.psd.select();
+   //psd2="" //把变量清空，但document.form1.cpsd.value还是原来的值，并没有清空document.form1.cpsd.value的值
+   document.form1.cpsd.value="";
+   }
+  else{
+   document.getElementById("sp2").innerHTML="";
+   }
+  }
+ function funqq(){
+  var qq=document.form1.qq.value;
+  if(isNaN(qq)){
+   document.getElementById("sp3").innerHTML="qq必须是数字";
+   }
+  else if(qq.length<=7 || qq.length>=12){
+   document.getElementById("sp3").innerHTML="qq不能小于8位或大于12位";
+   }
+  else {
+   document.getElementById("sp3").innerHTML="";
+   }
+  }
+</script>
+</head>
+<body onload="init();">
+ <form name="form1" method="post" action="">
+  <div>
+  <label for="username">
+   用户：<input type="text" name="username" id="username" onblur="blu();"  value="" /><span id="sp"></span>
+  </label>
+  </div>
+  <div>
+  <label for="psd1">
+   密码：<input type="password" name="psd" id="psd1" onblur="funpsd();"  value="" /><span id="sp1"></span>
+  </label>
+  </div>
+  <div>
+  <label for="cpsd1">
+   确认密码：<input type="password" name="cpsd" id="cpsd1" onblur="funcpsd();" value="" /><span id="sp2"></span>
+  </label>
+  </div>
+  <div>
+  <label for="sex">
+   性别：<input type="radio" name="sex" value="男" checked="checked">男<input type="radio" name="sex" value="女">女
+  </label>
+  </div>
+  <div>
+   年龄：
+  <select name="sel">
+   <option value="18">18</option>
+   <option value="19">19</option>
+   <option value="20">20</option>
+   <option value="21">21</option>
+   <option value="22">22</option>
+  </select>
+  </div>
+  <div>
+  QQ:<input type="text" value="" name="qq" onblur="funqq();" /><span id="sp3"></span>
+  </div>
+  <div>
+  <input type="submit" value="提交" />
+  <input type="reset" value="重置" />
+  </div>
+ </form>
+</body>
+</html>

@@ -1,0 +1,126 @@
+body{
+    margin: 2px;
+    padding: 2px;
+}
+@themes: 'css';
+@import "@{themes}/base.less";
+
+@nice-blue: #5b83AD;
+@light-blue: @nice-blue + #333;
+@three-blue: @light-blue - @nice-blue;
+.bordered{
+    border-top: dotted 1px black;
+    border-bottom: dotted 2px black;
+}
+@link-color: #9ca / 2;
+@link-color-hover: darken(@link-color,80%);
+
+#header{
+    color: @light-blue;
+    .navogation{
+        font-size: 12px;
+    }
+    .other{
+        color: @three-blue;
+    }
+    .logo{
+        width: 300px;
+    }
+}
+#menu a{
+    color: @link-color;
+    .bordered;
+}
+#menu a:hover{
+    color: @link-color-hover;
+}
+.screen-color{
+    @media screen{
+        color:green;
+        @media (min-width: 768px){
+            color: red;
+        }
+    }
+}
+
+#bundle{
+    .button{
+        color: orange;
+        display: block;
+        border: 1px solid black;
+        background-color: @nice-blue;
+        &:hover{
+            background-color: red;
+        }
+    }
+}
+section a{
+    color: yellow;
+    #bundle>.button;
+}
+
+@var:red;
+#page{
+    @var: black;
+    a{
+        color: @var;
+    }
+    @var: yellow;
+    @var: orange;
+}
+
+@my-selector: banner;
+
+.@{my-selector}{
+    font-weight: bold;
+    line-height: 40px;
+    margin: 0 auto;
+}
+
+@logo: "images";
+@property: height;
+.logo{
+    width: 190px;
+    @{property}: 52px;
+    background: url("@{logo}/logo.png");
+}
+
+@fnord: "I am fnord.";
+@var: "fnord";
+.content{content:@@var;}
+
+ul li{
+    &:extend(.inline);
+    background: blue;
+}
+.inline{
+    color: red;
+    background: #999;
+}
+
+.my-mixin {
+    color: black;
+}
+.my-other-mixin() {
+    background: white;
+}
+.class {
+    .my-mixin;
+    .my-other-mixin();
+}
+
+.mixin(@color) {
+    color-1: @color;
+  }
+  .mixin(@color; @padding: 2) {
+    color-2: @color;
+    padding-2: @padding;
+  }
+  .mixin(@color; @padding; @margin: 2) {
+    color-3: @color;
+    padding-3: @padding;
+    margin: @margin @margin @margin @margin;
+  }
+  .some{
+    .mixin(#008000);
+  }

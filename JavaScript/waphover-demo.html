@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<meta name="format-detection" content="telephone=no" /> 
+	<meta name="apple-touch-fullscreen" content="yes" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<title>Document</title>
+	<style>
+	ul{margin: 10px 5px;padding:0;border-top: 1px solid #ccc;font-family: "微软雅黑"}
+	li{list-style: none;border-bottom: 1px solid #ccc;}
+	li a{display: block;line-height: 40px;text-align: center;color: #333;text-decoration: none;}
+	/*li a:hover,*/
+	li .cur{background: #f66;color: #fff;}
+	</style>
+</head>
+<body>
+
+<ul id="ul">
+	<li><a href="###">我是按钮001</a></li>
+	<li><a href="###">我是按钮002</a></li>
+	<li><a href="###">我是按钮003</a></li>
+	<li><a href="###">我是按钮004</a></li>
+	<li><a href="###">我是按钮005</a></li>
+</ul>
+
+<script>
+/***方法***/
+function wapHover(obj,className){
+	var obj = obj;
+	var className = className;
+	for(var i=0; i<obj.length; i++){
+		obj[i].ontouchstart = function(){
+			this.className = className;
+		};
+		obj[i].ontouchend = function(){
+			this.className = "";
+		};
+	}
+}
+
+/***使用***/
+var ul=document.getElementById('ul');
+var a=ul.getElementsByTagName('a');
+wapHover(a,"cur");
+/*
+//jquery使用
+wapHover($("#ul a"),"cur");
+*/
+</script>
+
+</body>
+</html>

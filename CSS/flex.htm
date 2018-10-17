@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .bg-gray{
+      background: gray;
+      color: #fff;
+      font-size: 40px;
+    }
+    .bg-yellow{
+      background: yellow;
+      color: #fff;
+      font-size: 40px;
+    }
+    .main{
+      width: 600px;
+      border: 1px solid #000;
+      display: flex;
+      align-items: center;
+      height: 300px;
+    }
+    .left{
+      width: 100px;
+      height: 300px;
+    }
+    .right{
+      margin-left: 20px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      width: 100%;
+      justify-content: space-between;
+    }
+    .top{
+      width: 100%
+    }
+    .bottom{
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+  <div class="main">
+    <div class="left bg-gray">left内容</div>
+    <div class="right bg-gray">
+      <div class="top bg-yellow">M</div>
+      <div class="bg-yellow bottom">
+        <div>1</div>
+        <div>2</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

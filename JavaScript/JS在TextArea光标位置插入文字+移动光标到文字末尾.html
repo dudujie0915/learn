@@ -1,0 +1,48 @@
+<!--
+    在网上看了很多用js 将光标移动到textarea的最后，但是看了很多垃圾方法，屁不管用，浪费时间，最近用到一个新方法
+    =IE支持document.selection
+    =Firefox，Chrome,Safari以及Opera都有selectionStart和selectionEnd属性
+-->
+<html>
+<head>
+<meta charset="UTF-8" />
+<title></title>
+<script type="text/javascript">
+//在光标位置插入文字
+function insertText(obj,str) {
+obj.focus();
+if (document.selection) {
+var sel = document.selection.createRange();
+sel.text = str;
+} else if (typeof obj.selectionStart == 'number' && typeof obj.selectionEnd == 'number') {
+var startPos = obj.selectionStart,
+endPos = obj.selectionEnd,
+cursorPos = startPos,
+tmpStr = obj.value;
+obj.value = tmpStr.substring(0, startPos) + str + tmpStr.substring(endPos, tmpStr.length);
+cursorPos += str.length;
+obj.selectionStart = obj.selectionEnd = cursorPos;
+} else {
+obj.value += str;
+}
+}
+function moveEnd(obj){
+obj.focus();
+var len = obj.value.length;
+if (document.selection) {
+var sel = obj.createTextRange();
+sel.moveStart('character',len);
+sel.collapse();
+sel.select();
+} else if (typeof obj.selectionStart == 'number' && typeof obj.selectionEnd == 'number') {
+obj.selectionStart = obj.selectionEnd = len;
+}
+}
+</script>
+</head>
+<body onload="init();">
+    <p>&nbsp;<textarea id="text" style="width:300px;height:50px;">这些是默认文字</textarea></p>
+<p>&nbsp;<input type="button" value="插入文字" onclick="insertText(document.getElementById('text'),' 新文字&#8212;YoyiorLee ')"></p>
+<p>&nbsp;<input type="button" value="移到末尾" onclick="moveEnd(document.getElementById('text'))"></p>
+</body>
+</html>

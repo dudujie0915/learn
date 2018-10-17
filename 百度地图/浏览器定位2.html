@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<style type="text/css">
+	body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+	</style>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=R8NcZjzRlHDjAPVqRwm95hIs"></script>
+	<title>地图展示</title>
+</head>
+<body>
+	<div id="allmap"></div>
+</body>
+</html>
+<script type="text/javascript">
+var map = new BMap.Map("allmap");
+var point = new BMap.Point(116.331398,39.897445);
+map.centerAndZoom(point,12);
+map.enableScrollWheelZoom(true);
+map.addControl(new BMap.NavigationControl());//地图平移缩放控件
+
+var geolocation = new BMap.Geolocation();  //实例化浏览器定位对象。
+ //下面是getCurrentPosition方法。调用该对象的getCurrentPosition()，与HTML5不同的是，这个方法原型是getCurrentPosition(callback:function[, options: PositionOptions])，也就是说无论成功与否都执行回调函数1，第二个参数是关于位置的选项。 因此能否定位成功需要在回调函数1中自己判断。
+geolocation.getCurrentPosition(function(r){   //定位结果对象会传递给r变量
+    if(this.getStatus() == BMAP_STATUS_SUCCESS){  //通过Geolocation类的getStatus()可以判断是否成功定位。
+        var mk = new BMap.Marker(r.point);    //基于定位的这个点的点位创建marker
+        map.addOverlay(mk);    //将marker作为覆盖物添加到map地图上
+        map.panTo(r.point);   //将地图中心点移动到定位的这个点位置。注意是r.point而不是r对象。
+		mk.enableDragging();           // 可拖拽
+		var geoc = new BMap.Geocoder(); 
+        alert('您的位置：'+r.point.lng+','+r.point.lat);  //r对象的point属性也是一个对象，这个对象的lng属性表示经度，lat属性表示纬度。
+        /*单击获取点击的经纬度
+	    mk.addEventListener("dragend", function(){    
+		 var center = map.getCenter();    
+		 alert("地图中心点变更为：" + center.lng + ", " + center.lat);    
+		});*/
+		mk.addEventListener("dragend", function(){    
+		var center = map.getCenter();
+		alert("地图中心点变更为：" + center.lng + ", " + center.lat);   
+//		geoc.getLocation(center, function(rs){
+//			var addComp = rs.addressComponents;
+//			alert(addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber);
+//		});        
+	});
+    }
+    else {
+        alert('failed'+this.getStatus());
+    }        
+},{enableHighAccuracy: true});
+
+
+
+</script>
