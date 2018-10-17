@@ -1,0 +1,27 @@
+<html> 
+<head> 
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+</head> 
+<body > 
+<iframe width="800px" height="800px"></iframe> 
+</body> 
+<script type="text/javascript"> 
+
+console.log("begin") 
+var iframe=document.getElementsByTagName("iframe")[0]; 
+iframe.onload=function (argument) { 
+setTimeout(function(){ 
+var as =iframe.contentWindow.document.getElementsByTagName("a"); 
+var target=as[as.length -1]; 
+console.log("click") 
+window.top.loading= iframe.contentWindow.loading; 
+//target.click.bind(iframe.contentWindow); 
+target.click(true) 
+},2000) 
+
+} 
+iframe.src="https://www.sgs.gov.cn/notice/search/ent_except_list" 
+
+
+</script> 
+</html>

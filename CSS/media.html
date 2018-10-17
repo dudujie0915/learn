@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<style>
+			@media screen and (min-width: 1000px) {
+			    body{font-size:20px;}
+			}
+			@media screen and (max-width: 1000px) {
+			    body{font-size:10px;}
+			}
+			h1{font-size:2.5em;}
+			.p1{font-size:2.0em;}
+			.p2{font-size:1.5em;}
+			.p3{font-size:1.2em;}
+			.p4{font-size:1.0em;}
+			.p5{font-size:0.5em;}
+		</style>
+	</head>
+	<body>
+		<h1>标题</h1>
+		<p class="p1">设置body的font-size的值，用媒体查询的方式设置不同的大小，具体内容用em表示，当屏幕大小发生变化时，具体内容的字体的大小会发生变化</p>
+		<p class="p2">特别注意的是，在chrome浏览器上，字体显示最小为12px，愿意是中文字体小于12px显示的先过不好，可以在下面三个标签中看到效果</p>	
+		<p class="p3">当浏览器屏幕宽带小于1000px时，显示字体为12px</p>
+		<p class="p4">当浏览器屏幕宽带小于1000px时，显示字体为10px</p>
+		<p class="p5">当浏览器屏幕宽带小于1000px时，显示字体为8px</p>
+	</body>
+</html>

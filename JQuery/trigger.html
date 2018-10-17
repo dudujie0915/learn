@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$(".p1").click(function(){
+					$(".p2").trigger('click');
+				});
+				$(".p2").click(function(){
+					alert(243);
+					
+				});
+			});
+		</script>
+	</head>
+	<body>
+	<p class="p1">dianji</p>
+	<p class="p2">beidianji</p>
+	</body>
+</html>

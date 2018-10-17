@@ -1,0 +1,48 @@
+<html>
+<head>
+<meta charset="UTF-8"/>	
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="jquery-cookie.js"></script>
+
+</head>
+<body>
+<script type="text/javascript">
+$(function(){
+		if($.cookie('device')!=null){
+			var cookieVal = $.cookie('device');
+			switch(cookieVal){
+				case 'pc':
+				window.location.href='http://www.wangdaizhijia.com';
+				break;
+				case 'web':
+				window.location.href='http://m.wangdaizhijia.com';
+				break;
+			}
+		}
+		$('li').click(function(e){
+			//var link = $(this).attr('href');
+			var deviceVal= $(this).attr('id');
+			$.cookie('device',deviceVal,{ expires: 365 });
+			setTimeout(function(){
+					//window.location.href = link;
+					if(deviceVal == 'pc'){
+						window.location.href='http://www.wangdaizhijia.com';
+					}else if(deviceVal == 'web'){
+						window.location.href='http://m.wangdaizhijia.com';
+					}else{
+						alert('再次选择');
+					}
+			},100);
+		})
+	
+	
+})
+
+</script>
+</body>
+    <ul>
+    	<li id="pc">pc</li>
+    	<li id="web">web</li>
+    	<li id="close">close</li>
+    </ul>
+</html>
