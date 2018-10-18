@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"><meta charset="UTF-8">
+        <title></title>
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+        <meta content="yes" name="apple-mobile-web-app-capable">
+        <meta content="black" name="apple-mobile-web-app-status-bar-style">
+        <meta name="format-detection" content="telephone=no" /> 
+        <meta name="apple-touch-fullscreen" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <style type="text/css" media="screen">
+            input{width: 300px;}
+        </style>
+    </head>
+    <body>
+    <div id="msg"></div> 
+text:<input type="text" class="txt" id="deadline"><br><br>
+number:<input type="number" class="txt" id="deadline2"><br><br>
+text:<input type="text" class="txt" id="deadline3"><br><br>
+number:<input type="number" class="txt" id="deadline4"><br><br>
+tel:<input type="tel" class="txt" id="deadline5"><br><br>
+	<input type="number" onkeypress="return noNumbers(event)" class="form-input">
+<script> 
+	//当状态改变的时候执行的函数 
+	function handle() 
+	{
+	    this.value=this.value.replace(/[^\d]/g,'');
+	    //firefox下检测状态改变只能用oninput,且需要用addEventListener来注册事件。 
+	}
+    function handle1() 
+    {
+        this.value = this.value.replace(/[^\d.]/g,"");
+        //必须保证第一个为数字而不是.
+        this.value = this.value.replace(/^\./g,"");
+        //保证只有出现一个.而没有多个.
+        this.value = this.value.replace(/\.{2,}/g,".");
+        //保证.只出现一次，而不能出现两次以上
+        this.value = this.value.replace(".","$#$").replace(/\./g,"").replace("$#$",".");
+    }
+	function zinx(obj){
+	    bvar _obj =  document.getElementById(obj); 
+	    if(/msie/i.test(navigator.userAgent))    //ie浏览器 
+	    {
+	       _obj.onpropertychange=handle;
+	    } 
+	    else 
+	    {
+	    _obj.addEventListener("input",handle,false);
+	    }   
+	    _obj.onkeyup=handle;
+	    _obj.onbeforepaste=handle;
+	}
+	function zinx1(obj){
+	    var _obj =  document.getElementById(obj); 
+	    if(/msie/i.test(navigator.userAgent))    //ie浏览器 
+	    {
+	       _obj.onpropertychange=handle1;
+	       _obj.onkeyup=handle1;
+	       _obj.onbeforepaste=handle1;
+	    } 
+	    else 
+	    {//非ie浏览器，比如Firefox 
+	    _obj.addEventListener("input",handle1,false); 
+	    _obj.onkeyup=handle1;
+	       _obj.onbeforepaste=handle1;
+	    }   
+	}
+	zinx("deadline");
+	zinx("deadline2");
+	zinx1("deadline3");
+	zinx1("deadline4");
+	zinx1("deadline5");
+</script> 
+
+
+    </body>
+</html>

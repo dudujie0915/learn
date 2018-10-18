@@ -1,0 +1,81 @@
+<!doctype>
+<html lang="ch">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        <!--移动端版本兼容 end --> 
+		<title></title>
+		<style type="text/css">
+			@charset "utf-8";
+				*{margin:0px;padding: 0px;}
+				ul,li{list-style: none;}
+				input,textarea{border:none}
+				.br{border-radius: 10px;-webkit-border-radius: 10px;-moz-border-radius: 10px;}
+				.wrap{width: 1000px;margin: 0 auto;}
+				.title{font-size: 48px;color: #000;text-align: center;margin: 50px 0 20px;}
+				.form-li{overflow: hidden;margin-top: 20px;font-size: 30px;}
+				.form-li-left{float: left;width: 150px;height: 50px;line-height: 50px;text-align: left;padding-left: 50px;}
+				.form-li-right{float: left;width: 790px;height: 50px;line-height: 50px;text-align: left;}
+				.form-li-right input{height: 50px;line-height: 50px;width: 750px;font-size: 30px;border: 1px solid #252525;color: #348BCD;padding: 0 20px;}
+				.form-li textarea{width: 900px;font-size: 20px;border: 1px solid #252525;height: 400px;color: #348BCD;padding: 18px;}
+				.make{width: 200px;height: 50px;line-height: 50px;background: #ccc;color: #fff;font-size: 30px;text-align: center;margin: 20px auto 0;}
+		</style>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		
+
+	</head>
+	<body>
+		<div class="wrap">
+			<h2 class="title">视频自适应代码制作</title>
+			<div class="form-div">
+				<ul class="form-ul">
+					<li class="form-li">
+						<div class="form-li-left">宽：</div>
+						<div class="form-li-right"><input type="text" id="textW" class="br"></div>
+					</li>
+					<li class="form-li">
+						<div class="form-li-left">高：</div>
+						<div class="form-li-right"><input type="text" id="textH" class="br"></div>
+					</li>
+					<li class="form-li">
+						<div class="form-li-left">视频ID：</div>
+						<div class="form-li-right"><input type="text" id="textID" class="br"></div>
+					</li>
+					<li class="form-li">
+						<textarea id="htmlcontent" class="br"></textarea>
+					</li>
+				</ul>
+			</div>
+			<input class="make br" type="button" id="submit" value="生成">	
+		</div>
+		<script type="text/javascript">
+			$(function(){
+				$('#submit').click(function(){
+					var rsW = $.trim($('#textW').val());
+					var rsH = $.trim($('#textH').val());
+					var _textID = $.trim($('#textID').val());
+					var _vid = _textID.split('_')[1]+'_'+_textID.split('_')[2]
+					var html ='<script  name="Getimg" src="http://static.polyv.net/file/polyvplayer_v2.0.min.js"><\/script>\r\n'+
+							    '<div id="'+_textID+'"></div>\r\n'+
+								'<script type="text/javascript">\r\n'+
+								'var rsW = '+rsW+';\r\n'+
+								'var rsH = '+rsH+';\r\n'+
+								'if(!!navigator.userAgent.match(/AppleWebKit.*Mobile.*/)){\r\n'+
+							//	'rsW = "100%";\r\n'+
+							//	'rsH = "0";}\r\n'+
+								'rsW = 0.94*$(window).width();\r\n'+
+							    'rsH = ('+rsH+'*rsW)/'+rsW+';}\r\n'+
+								'var player = polyvObject("#'+_textID+'").videoPlayer({\r\n'+
+								'"width":rsW,\r\n'+
+								'"height":rsH,\r\n'+
+								'"vid" : "'+_vid+'"\r\n'+
+								'});<\/script>'
+								
+					$('#htmlcontent').val(html);
+				});
+			})
+			
+		</script>
+
+	</body>
+</html>

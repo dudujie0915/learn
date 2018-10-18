@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body>
+    <script>
+function checkLength(obj,maxlength){
+    if(obj.value.length > maxlength){
+        obj.value = obj.value.substring(0,maxlength);
+    }
+}
+</script>
+<textarea onpropertychange="checkLength(this,10);" oninput="checkLength(this,10);"></textarea>
+
+
+<TEXTAREA class="textareaCSS" id="TXT_XXX" name="TXT_XXX" oncontextmenu="return false;" class="textareaCSS" onKeyDown='if (this.value.length>=10){if(event.keyCode != 8)event.returnValue=false;}'></TEXTAREA>
+
+
+<script>
+function check() {
+var regC = /[^ -~]+/g;
+var regE = /\D+/g;
+var str = t1.value;
+
+if (regC.test(str)){
+    t1.value = t1.value.substr(0,10);
+}
+
+if(regE.test(str)){
+    t1.value = t1.value.substr(0,20);
+}
+}
+</script>
+<textarea maxlength="10" id="t1" onkeyup="check();">
+</textarea>
+
+<div id="count"></div>
+<textarea id="remark" cols="50" rows="5"></textarea>
+  <script language="javascript">
+  $(function(){
+ $("#remark").keyup(function(e){
+        checkMaxLength(e);
+ 
+    }) .keydown(function(e){
+           checkMaxLength(e);
+        })})
+ 
+ 
+        /*不能超过指定字符*/
+      window.COUNT=20;
+    function checkMaxLength(e) {
+        var name= $.trim($("#remark").val());
+        var strLen=0;
+        for(var i=0;i<name.length;i++){
+            if(name.charCodeAt(i)<27||name.charCodeAt(i)>126){ //中文和中文字符
+                strLen+=2;
+                console.log(strLen);
+            }
+            else{
+                strLen ++;
+            }
+        }
+        if(strLen<=COUNT){
+            $("#count").text(COUNT-strLen);
+        }
+        else{
+            $("#count").text("0");
+            //你这里是干嘛？？直接执行就好了
+            //逻辑也有问题，怎么使用输入的总长度，而应该是限制的总长度
+            $("#remark").val(name.substr(0,window.COUNT));
+            /*for(var j= 0,len=name.length;j<len;j++){
+                $("#remark").val(name.substr(0,j));
+            }*/
+ 
+        }
+ 
+    }
+ 
+</script>
+
+请输入：<input type="text"  id="aaa" maxlength="10">
+<script>
+
+        $(function () {
+            $('#aaa').bind('input propertychange',function() {
+                var $that =  $(this),
+                        limitLen = 10;                            //定义所需字节数
+                $that.attr('maxlength',limitLen);
+                setTimeout(function(){
+                    var value =  $that.val(),
+                        reg = /[\u4e00-\u9fa5]{1}/g,             //中文
+                        notReg = /\w{1}/g;                      //非中文
+                    var resultCn = value.match(reg);
+                    var resultEn = value.match(notReg);
+                    if(resultCn){
+                        limitLen = limitLen - (resultCn.length*2);
+                        //console.log(limitLen);
+                    }
+                    if(resultEn){
+                        limitLen = limitLen - resultEn.length;
+                        //console.log(-limitLen);
+                    }
+                    if(limitLen<=0){
+                        console.log('+++'+limitLen);
+                        limitLen = 0;
+                        console.log(limitLen);
+                        var finalLen = value.length+limitLen;
+                        console.log('---'+finalLen);
+                        value = value.substring(0,finalLen);
+                        $that.attr('maxlength',limitLen);
+                        $that[0].value = value;
+                    }
+                },0);
+
+            });
+        });
+
+    </script>
+</body>
+</html>

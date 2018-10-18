@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>CSS3 实现六边形图片展示效果</title>
+    <style type="text/css">
+        body, div, img, ul, li
+        {
+            margin: 0;
+            padding: 0;
+        }
+        body
+        {
+            font-size: 12px;
+            background-color: #DDD;
+            min-width: 1200px;
+        }
+        ul, ul li
+        {
+            list-style: none;
+        }
+        .clear
+        {
+            clear: both;
+        }       
+        .box
+        {
+            position: relative;
+            width: 630px;
+            margin: 100px auto;
+        }
+        .lineF
+        {
+            position: absolute;
+            visibility: hidden;
+        }
+        .boxF, .boxS, .boxT, .overlay
+        {
+            width: 250px;
+            height: 300px;
+            overflow: hidden;
+        }
+        .boxF, .boxS
+        {
+            visibility: hidden;
+        }
+        .boxF
+        {
+            transform: rotate(120deg);
+            float: left;
+            -ms-transform: rotate(120deg);
+            -moz-transform: rotate(120deg);
+            -webkit-transform: rotate(120deg);
+        }
+        .boxS
+        {
+            transform: rotate(-60deg);
+            -ms-transform: rotate(-60deg);
+            -moz-transform: rotate(-60deg);
+            -webkit-transform: rotate(-60deg);
+        }
+        .boxT
+        {
+            transform: rotate(-60deg);
+            background: no-repeat 50% center;
+            background-size: cover;
+            -ms-transform: rotate(-60deg);
+            -moz-transform: rotate(-60deg);
+            -webkit-transform: rotate(-60deg);
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <!--第一行(lineFirst)-->
+        <div class="lineF">
+            <div class="boxF">
+                <div class="boxS">
+                    <div class="boxT" style="background-image: url(wechat.jpg);">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

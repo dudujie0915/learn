@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+         .test
+         {
+             background-color: green;
+         }
+     </style>
+     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+     <script type="text/javascript">
+         $(function () {
+           $("td.gname").each(function () {
+              $(this).click(function () {
+                   //alert($(this).text());
+                   //$(this).addClass("test").siblings("td").removeClass("test");
+                   $("td.gname").removeClass("test");
+			        $(this).addClass("test");
+              
+              });
+          });
+          /*
+			$.each($("td.gname"),function(i,o){
+			    $(o).click(function(){
+			       // alert($("td.gname").eq(i).html());
+			       $("td.gname").removeClass("test");
+			        $("td.gname").eq(i).addClass("test");
+			    });
+			});
+           */
+         });
+ 
+     </script>
+	</head>
+	<body>
+    
+ 
+     <form id="form1" runat="server">
+         <div>
+            <table border="1" cellspacing="0" cellpadding="0" width="100%">
+                 <tr>
+                    <td class="gname" width="60%">测试1</td>
+                    <td class="gname" width="60%">xiao1</td>
+                    <td class="gname" width="60%">xiao2</td>
+                </tr>
+                   <tr>
+                    <td class="gname" width="60%">测试3</td>
+                     <td class="gname" width="60%">xiao4</td>
+                    <td class="gname" width="60%">xiao5</td>
+                 </tr>
+                   <tr>
+                     <td class="gname" width="60%">测试6</td>
+                     <td class="gname" width="60%">xiao7</td>
+                     <td class="gname" width="60%">xiao8</td>
+                </tr>
+             </table>
+
+ 
+        </div>
+     </form>
+
+	</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+<body>
+    <input name="leftInput" id="leftInput" type="text">
+    <input name="rightInput" id="rightInput" type="text">
+    <script>  
+        function handle() 
+        {
+            this.value = this.value.replace(/[^\d.]/g,"");
+            //必须保证第一个为数字而不是.
+            this.value = this.value.replace(/^\./g,"");
+            //保证只有出现一个.而没有多个.
+            this.value = this.value.replace(/\.{2,}/g,".");
+            //保证.只出现一次，而不能出现两次以上
+            this.value = this.value.replace(".","$#$").replace(/\./g,"").replace("$#$",".");
+        }
+        function zinx(obj){
+            var _obj =  document.getElementById(obj); 
+            //非ie浏览器，比如Firefox 
+            _obj.addEventListener("input",handle,false); 
+        }
+        zinx("leftInput");
+        zinx("rightInput");
+    </script> 
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <textarea rows="" cols="" id="textarea1" style="display:block;">
+        “好风凭借力，扬帆正当时”。满怀复兴的梦想，乘着改革的东风，中国经济犹如一艘行稳致远的巨轮，乘风破浪，砥砺前行。
+        党的十八大以来，以习近平同志为总书记的党中央洞悉国内外形势，把脉中国经济，以巨大的勇气开启一场浩浩荡荡的经济变革，以超高的智慧谋划出平稳运行的“航线图”，促使经济转型升级，迸发出新的前进动力。
+        调整结构、转换动力、换挡速度，“十三五”规划开局之年，中国经济开足马力，激流勇进，历险弥坚。
+    </textarea>
+<input type="button" id="submit" value="提交"/>
+<div id="result1"></div>
+    <script>
+        window.onload = function(){
+            document.getElementById("submit").onclick = function(){
+                hb_textString("result1","textarea1");
+            }
+        }
+        function hb_textString(id,textarea_id){
+            var hb_text = document.getElementById(textarea_id).value;
+            var hb_textHtml = hb_text.replace(/\n/g, '_@').replace(/\r/g, '_#');
+            hb_textHtml = hb_textHtml.replace(/_#_@/g, '<br/>');//IE7-8
+            hb_textHtml = hb_textHtml.replace(/_@/g, '<br/>');//IE9、FF、chrome
+            hb_textHtml = hb_textHtml.replace(/\s/g, '&nbsp;');//空格处理
+            document.getElementById(id).innerHTML = hb_textHtml;
+        }
+    </script>
+</body>
+</html>

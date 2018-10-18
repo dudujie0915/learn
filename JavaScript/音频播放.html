@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="author" content="Tencent-CDC">
+    <title>腾讯校园招聘</title>
+    <link rel="stylesheet" href="http://h5app.qq.com/act/S3/2015CampusRC/assets/css/main.css">
+    <style type="text/css" media="screen">
+        .page {
+    background-color: #fff;
+    display: block;
+}
+.page .ask_bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.7);
+    z-index: 99;
+    display: block;
+}
+.page .contain {
+    left: 50%;
+    width: 375px;
+    height: 603px;
+    margin-top: -301.5px;
+    margin-left: -187.5px;
+    -webkit-transform-origin: center center;
+    -ms-transform-origin: center center;
+    transform-origin: center center;
+    z-index: 9;
+    display: block;
+}
+    </style>
+</head>
+<body>
+
+    
+
+    <div class="page page2 page_denycui">
+        
+        <div class="ask_bg">
+            <div class="ask_content contain">
+                <div class="message message_right">
+                    <div class="message_content">为什么你说你宁缺毋滥呢？</div>
+                    <div class="message_avatar avatar_self"></div>
+                </div>
+                <div class="message message_left">
+                    <div class="message_content message_voice" data-voice="denycui4" style="width:85px;">
+                        <div class="voice"></div>
+                        <span class="voice_time">30″</span>
+                    </div>
+                    <div class="message_avatar avatar_denycui"></div>
+                </div>
+                <!-- 问题分割线 -->
+                <div class="message message_right">
+                    <div class="message_content">产品岗位对看重学生什么样的能力？</div>
+                    <div class="message_avatar avatar_self"></div>
+                </div>
+                <div class="message message_left">
+                    <div class="message_content message_voice" data-voice="denycui1" style="width:102px;">
+                        <div class="voice"></div>
+                        <span class="voice_time">41″</span>
+                    </div>
+                    <div class="message_avatar avatar_denycui"></div>
+                </div>
+                <!-- 问题分割线 -->
+                <div class="message message_right">
+                    <div class="message_content">产品类岗位对专业有限制么？</div>
+                    <div class="message_avatar avatar_self"></div>
+                </div>
+                <div class="message message_left">
+                    <div class="message_content message_voice" data-voice="denycui2" style="width:47px;">
+                        <div class="voice"></div>
+                        <span class="voice_time">12″</span>
+                    </div>
+                    <div class="message_avatar avatar_denycui"></div>
+                </div>
+                <!-- 问题分割线 -->
+                <div class="message message_right">
+                    <div class="message_content">对应聘产品岗位同学的建议？</div>
+                    <div class="message_avatar avatar_self"></div>
+                </div>
+                <div class="message message_left">
+                    <div class="message_content message_voice" data-voice="denycui3" style="width:128px;">
+                        <div class="voice"></div>
+                        <span class="voice_time">48″</span>
+                    </div>
+                    <div class="message_avatar avatar_denycui"></div>
+                </div>
+
+                <a href="javascript:;" class="message_back">返回</a>
+            </div>
+        </div>
+    </div>
+
+ <script src="http://code.jquery.com/jquery-1.11.1.min.js" type="text/javascript" charset="utf-8"></script>   
+
+<script>
+$(function() {
+
+    // 定义音频
+    var player = document.createElement('audio');
+    player.preload = true;
+    player.addEventListener('ended', function() {
+        $('.message_voice').removeClass('playing');
+    });
+
+
+    // 点击返回正常页面
+    $(document).on('click', '.message_back', function() {
+        var $this = $(this);
+        var $page = $this.parents('.page');
+        var $voice = $('.message_voice');
+    
+        // 停止播放语音
+        player.pause();
+        $voice.removeClass('playing');
+
+        // 允许 page 页面事件冒泡
+        $('.page').unbind('touchmove');
+
+        return false;
+    });
+
+
+    // 点击播放语音
+    $(document).on('click', '.message_voice', function() {
+        var $this = $(this);
+        var $voice = $('.message_voice');
+        var isPlaying = $this.hasClass('playing');
+        var voiceName = $this.data('voice');
+        alert(voiceName);
+        if (isPlaying) {
+            // 判断是否在播放当前语音
+            player.pause();
+            $this.removeClass('playing');
+        } else {
+            // 播放对应的语音
+            player.pause();
+            player.setAttribute('src', 'http://h5app.qq.com/act/S3/2015CampusRC/assets/music/' + voiceName + '.mp3');
+            player.play();
+            $voice.removeClass('playing');
+            $this.addClass('playing');
+        }
+    });
+});
+</script>
+</body>
+</html>

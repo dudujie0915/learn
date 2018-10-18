@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta charset="UTF-8">
+		<meta name="apple-touch-fullscreen" content="YES" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta http-equiv="Expires" content="-1" />
+		<meta http-equiv="pragram" content="no-cache" />
+		<!--移动端版本兼容 -->  
+	    <meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">  
+		<title></title>
+		<style type="text/css">
+            *{margin:0;padding:0;}
+            .target {position: relative;}
+            .placeholder{
+            	position: absolute;
+                display:block; 
+                width:100px; /*小于父级宽度的值*/
+                height:50px; /*高度值为顶部固定块的高度*/
+                top: -50px;/*值为顶部固定块的高度*/
+                }
+		</style>
+	</head>
+	<body>
+		<div style="height: 50px;background:grey;position:fixed;top:0;left:0;right:0;z-index:100;"></div>
+		<div style="height:200px;background:green;"></div>
+		<a href="#hehe">click me</a>
+		<div style="height:600px;background:pink;"></div>
+		<a name="hehe" class="target">	<span class="placeholder"></span>	I am here. You can see me.</a>
+		<div style="height:600px;background:purple;"></div>
+		<div style="height:600px;background:yellow;"></div>
+	</body>
+</html>
