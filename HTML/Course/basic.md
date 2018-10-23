@@ -1,3 +1,5 @@
+[代码实例](https://jshare.com.cn/course-html/FMZwsg/1/)
+
 #### `<!DOCTYPE html>`声明
 必须写，写在页面最顶部（所有标签前面），HTML5的写法，不区分大小写,不是HTML标签
 
@@ -45,4 +47,4 @@ head部分的内容，元数据
 
 ---
 ### 代码实例
-<iframe width="100%" height="450" src="https://code.hcharts.cn/course-html/FMZwsg/share/result,html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<iframe width="100%" height="450" src="https://code.hcharts.cn/course-html/FMZwsg/1/share/result,html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>

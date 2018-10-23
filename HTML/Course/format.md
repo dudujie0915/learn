@@ -1,3 +1,5 @@
+[代码实例](https://jshare.com.cn/course-html/tpVwsA/1/)
+
 #### `<abbr>`
 行内元素，表示简称或缩写，如果使用title属性，在不同浏览器上表现不一致
 
