@@ -45,6 +45,9 @@ head部分的内容，元数据
 #### `<noscript>`
 用来定义在脚本未被执行时的替代内容（文本）
 
+#### `<a>`
+行级元素，超链接
+
 ---
 ### 代码实例
 <iframe width="100%" height="450" src="https://code.hcharts.cn/course-html/FMZwsg/1/share/result,html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
